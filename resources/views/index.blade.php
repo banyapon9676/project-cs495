@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -22,5 +23,9 @@
     </head>
     <body class="antialiased">
       Welcoom
+      <br><div class="center">
+      <a href="/login">login here</a>
+      <a href="/register">Register here</a>
+      </div>
     </body>
 </html>
