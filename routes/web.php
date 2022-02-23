@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    if(Auth::check()){
+        return redirect('/home');
+    }else{
+        return view('index');
+    }
+    
+});
+
+Route::get('/create', function () {
+    return view('create');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin_controller'])->name('admin');
+
+Route::get('/search/{name}', [App\Http\Controllers\HomeController::class, 'search_controller'])->name('search');
