@@ -1,21 +1,19 @@
 <template>
-  <div class="container">
+  <div class="container ">
     <div class="row justify-content-center">
       <div class="col-12">
-        <div class="card">
+        <div class="card text-white bg-dark">
           <div class="row">
-            <div class="col-12">
-              <!-- Card header -->
+            <div class="col-8">
+              <h1>สินค้าที่พบ</h1>
             </div>
             <div class="col-12">
               <!-- Card body -->
-              <div class="card-body">
+              <div class="card-body text-dark bg-light">
                 <div class="row">
                   <div class="col-12">
-                    <!-- Carousel -->
                   </div>
                   <div class="col-12">
-                    <!-- Games -->
                     <div class="row my-5">
                       <!-- Loop games -->
                       <div class="col-6" v-for="fur in furnitures" :key="fur.id">
@@ -36,19 +34,19 @@
                                   {{ fur.description }}
                                 </p>
                                 <h4 class="card-text mt-5">
-                                  Price : {{ fur.price }} ฿
+                                  ราคา : {{ fur.price }} บาท
                                 </h4>
                                 <div class="card-text">
                                   <!-- buy btn -->
                                   <div class="d-grid gap-2 mt-5">
                                     <button
-                                      type="button"
+                                      type="button "
                                       data-bs-toggle="modal"
                                       data-bs-target="#buyGame"
-                                      class="btn btn-primary btn-block"
+                                      class="btn btn-dark btn-block"
                                       @click="readModal(fur.id)"
                                     >
-                                      Read more
+                                      อ่านข้อมูลเพิ่มเติม
                                     </button>
                                   </div>
                                 </div>
@@ -87,7 +85,6 @@
                                   style="max-height: 300px"
                                 />
                               </div>
-                              <!-- text area -->
                               <div class="mb-3 text-center">
                                 <label
                                   for="exampleFormControlTextarea1"
@@ -103,7 +100,7 @@
                                 ></textarea>
                               </div>
                               <div class="text-center">
-                                <h2>in steam {{ furPrice }} </h2>
+                                <h2>ราคา {{ furPrice }} บาท</h2>
                               </div>
                             </div>
                           </div>

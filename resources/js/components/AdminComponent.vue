@@ -6,14 +6,14 @@
           <div class="card-header">
             <div class="row">
               <div class="col">
-                <h1>Furnitures Dashboard</h1>
+                <h1>รายการเฟอร์นิเจอร์</h1>
               </div>
               <div class="col text-end mt-2">
                 <a
                   href="/create"
                   class="btn btn-success"
                   data-bs-target="#addProduct"
-                  >New Product</a
+                  >เพิ่มสินค้า</a
                 >
               </div>
             </div>
@@ -24,13 +24,13 @@
               <table class="table">
                 <thead class="table-secondary">
                   <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Delete</th>
-                    <th scope="col">Update</th>
+                    <th scope="col">รายการ</th>
+                    <th scope="col">รูปภาพ</th>
+                    <th scope="col">ชื่อสินค้า</th>
+                    <th scope="col">ราคา</th>
+                    <th scope="col">ข้อมูล</th>
+                    <th scope="col">อัปเดต</th>
+                    <th scope="col">ลบ</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,21 +44,21 @@
                     <td>{{ fur.description }}</td>
                     <td>
                       <button
-                        class="btn btn-danger mt-2"
-                        @click="delProduct(fur.id)"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                    <td>
-                      <button
                         type="button"
                         @click="updateModal(fur.id)"
                         class="btn btn-primary mt-2"
                         data-bs-toggle="modal"
                         data-bs-target="#updateModal"
                       >
-                        Update
+                        อัปเดต
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        class="btn btn-danger mt-2"
+                        @click="delProduct(fur.id)"
+                      >
+                        ลบ
                       </button>
                     </td>
                   </tr>
@@ -80,7 +80,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modal-header">Update Game</h5>
+            <h5 class="modal-title" id="modal-header">อัปเดตสินค้า</h5>
             <button
               type="button"
               class="btn-close"
@@ -90,7 +90,7 @@
           </div>
           <div class="modal-body">
             <form @submit.stop.prevent="updateProduct()">
-              <label for="name">Furnitures Name</label>
+              <label for="name">ชื่อสินค้า</label>
               <input
                 type="text"
                 id="name"
@@ -98,7 +98,7 @@
                 class="form-control"
                 required
               />
-              <label for="img">Image Url</label>
+              <label for="img">Url รูปภาพ</label>
               <input
                 type="text"
                 id="img"
@@ -106,7 +106,7 @@
                 class="form-control"
                 required
               />
-              <label for="price">Price</label>
+              <label for="price">ราคา</label>
               <input
                 type="number"
                 id="price"
@@ -114,7 +114,7 @@
                 class="form-control"
                 required
               />
-              <label for="des">Description</label>
+              <label for="des">ข้อมูลสินค้า</label>
               <textarea
                 id="des"
                 v-model="description"
@@ -123,8 +123,8 @@
                 required
               />
               <div class="mt-3 text-end">
-                <button type="reset" class="btn btn-danger mr-2">Cancel</button>
-                <button type="submit" class="btn btn-success">Update</button>
+                <button type="reset" class="btn btn-danger mr-2">ลบข้อมูล</button>
+                <button type="submit" class="btn btn-success">อัปเดต</button>
               </div>
             </form>
           </div>
@@ -177,19 +177,19 @@ export default {
           description: this.description,
         })
         .then(() => {
-          alert("Update product success.");
+          alert("อัปเดตสินค้าเรียบร้อย");
           window.location.reload();
         })
         .catch((err) => alert(err));
     },
     // Delete function
     delProduct(id) {
-      const isComfirm = confirm("Are you sure to delete this game?");
+      const isComfirm = confirm("คุณแน่ใจว่าจะลบสินค้าชิ้นนี้");
       if (isComfirm == true) {
         axios
           .delete(`/api/product/delete/${id}`)
           .then(() => {
-            alert("Delete product success.");
+            alert("ลบสินค้าเรียบร้อย");
             window.location.reload();
           })
           .catch((err) => alert(err));

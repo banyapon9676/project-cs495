@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <div class="card">
-      <div class="card-header">
+  <div class="container ">
+    <div class="card ">
+      <div class="card-header text-white bg-dark">
         <div class="row">
           <div class="col-8">
             <h1>Furnitures</h1>
@@ -12,33 +12,36 @@
                 class="form-control me-2"
                 type="search"
                 v-model="searchText"
-                placeholder="Search"
+                placeholder="ค้นหาสินค้า"
                 aria-label="Search"
                 required
               />
-              <button class="btn btn-success" type="submit">Search</button>
+              <button class="btn btn-success" type="submit">ค้นหา</button>
             </form>
           </div>
         </div>
       </div>
-      <div class="card-body">
+      <div class="card-body text-dark bg-light">
         <div class="container-sm">
           <div class="row">
             <div class="col-4 mt-5 d-flex justify-content-center" v-for="fur in furnitures" :key="fur.id">
-              <div class="card" style="width: 18rem">
+              <div class="card " style="width: 18rem">
                 <img :src="fur.image" class="card-img-top" />
                 <div class="card-body">
                   <h5 class="card-title">{{ fur.name }}</h5>
                   <p class="card-text text-truncate">
                     {{ fur.description }}
                   </p>
+                  
+                  <button type="button" class="btn btn-warning my-2 ">Buy</button>
+                  
                   <button
-                    class="btn btn-primary"
+                    class="btn btn-dark "
                     data-bs-toggle="modal"
                     data-bs-target="#readModal"
                     @click="readModal(fur.id)"
                   >
-                    Read more
+                    อ่านข้อมูลเพิ่มเติม
                   </button>
                 </div>
               </div>
@@ -48,9 +51,9 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- ข้างใน -->
     <div
-      class="modal fade"
+      class="modal fade "
       id="readModal"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -58,7 +61,7 @@
       aria-labelledby="readLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog ">
         <div class="modal-content"> 
           <div class="modal-header">
             <h5 class="modal-title" id="readLabel">{{ furName }}</h5>
@@ -98,7 +101,7 @@ export default {
     this.getFurnitures();
   },
   methods: {
-    // Get data function
+    
     getFurnitures() {
       axios
         .get("/api/product")
@@ -108,7 +111,7 @@ export default {
         .catch((err) => console.log(err));
     },
 
-    // Read more function
+    
     readModal(id) {
       axios.get(`/api/product/show/${id}`).then((data) => {
         this.furName = data.data.name;

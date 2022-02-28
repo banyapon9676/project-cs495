@@ -1,15 +1,16 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
+<body class="bg-secondary ">
+  <div class="container ">
+    <div class="row justify-content-center ">
+      <div class="col-md-8 ">
         <div class="card">
           <div class="card-header">
-            <div class="row">
+            <div class="row ">
               <div class="col">
-                <h1>Add Furnitures</h1>
+                <h1>เพิ่มสินค้า</h1>
               </div>
               <form @submit.stop.prevent="addProduct()">
-                <label for="name">Furnitures Name</label>
+                <label for="name">ชื่อสินค้า</label>
                 <input
                   type="text"
                   id="name"
@@ -17,7 +18,7 @@
                   class="form-control"
                   required
                 />
-                <label for="img">Image Url</label>
+                <label for="img">Url รูปภาพ</label>
                 <input
                   type="text"
                   id="img"
@@ -25,7 +26,7 @@
                   class="form-control"
                   required
                 />
-                <label for="price">Price</label>
+                <label for="price">ราคา</label>
                 <input
                   type="number"
                   id="price"
@@ -33,7 +34,7 @@
                   class="form-control"
                   required
                 />
-                <label for="des">Description</label>
+                <label for="des">ข้อมูลสินค้า</label>
                 <textarea
                   id="des"
                   v-model="description"
@@ -43,9 +44,9 @@
                 />
                 <div class="mt-3 text-end">
                   <button type="reset" class="btn btn-danger mr-2">
-                    Cancel
+                    ยกเลิก
                   </button>
-                  <button type="submit" class="btn btn-success">Save</button>
+                  <button type="submit" class="btn btn-success">บันทึก</button>
                 </div>
               </form>
             </div>
@@ -54,6 +55,7 @@
       </div>
     </div>
   </div>
+</body>
 </template>
 
 <script>
@@ -78,7 +80,7 @@ export default {
           description: this.description,
         })
         .then(() => {
-          alert("Add product success.");
+          alert("เพิ่มสินค้าเรียบร้อย");
           window.location.reload();
         })
         .catch((err) => alert(err));

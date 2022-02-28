@@ -5422,6 +5422,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5441,7 +5443,7 @@ __webpack_require__.r(__webpack_exports__);
         price: this.price,
         description: this.description
       }).then(function () {
-        alert("Add product success.");
+        alert("เพิ่มสินค้าเรียบร้อย");
         window.location.reload();
       })["catch"](function (err) {
         return alert(err);
@@ -5640,7 +5642,7 @@ __webpack_require__.r(__webpack_exports__);
         price: this.price,
         description: this.description
       }).then(function () {
-        alert("Update product success.");
+        alert("อัปเดตสินค้าเรียบร้อย");
         window.location.reload();
       })["catch"](function (err) {
         return alert(err);
@@ -5648,11 +5650,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     // Delete function
     delProduct: function delProduct(id) {
-      var isComfirm = confirm("Are you sure to delete this game?");
+      var isComfirm = confirm("คุณแน่ใจว่าจะลบสินค้าชิ้นนี้");
 
       if (isComfirm == true) {
         axios["delete"]("/api/product/delete/".concat(id)).then(function () {
-          alert("Delete product success.");
+          alert("ลบสินค้าเรียบร้อย");
           window.location.reload();
         })["catch"](function (err) {
           return alert(err);
@@ -5788,6 +5790,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5803,7 +5808,6 @@ __webpack_require__.r(__webpack_exports__);
     this.getFurnitures();
   },
   methods: {
-    // Get data function
     getFurnitures: function getFurnitures() {
       var _this = this;
 
@@ -5813,7 +5817,6 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err);
       });
     },
-    // Read more function
     readModal: function readModal(id) {
       var _this2 = this;
 
@@ -5843,9 +5846,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
 //
 //
 //
@@ -28907,129 +28907,133 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("div", { staticClass: "row" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  on: {
-                    submit: function ($event) {
-                      $event.stopPropagation()
-                      $event.preventDefault()
-                      return _vm.addProduct()
+  return _c("body", { staticClass: "bg-secondary " }, [
+    _c("div", { staticClass: "container " }, [
+      _c("div", { staticClass: "row justify-content-center " }, [
+        _c("div", { staticClass: "col-md-8 " }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("div", { staticClass: "row " }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function ($event) {
+                        $event.stopPropagation()
+                        $event.preventDefault()
+                        return _vm.addProduct()
+                      },
                     },
                   },
-                },
-                [
-                  _c("label", { attrs: { for: "name" } }, [
-                    _vm._v("Furnitures Name"),
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.productName,
-                        expression: "productName",
+                  [
+                    _c("label", { attrs: { for: "name" } }, [
+                      _vm._v("ชื่อสินค้า"),
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.productName,
+                          expression: "productName",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "name", required: "" },
+                      domProps: { value: _vm.productName },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.productName = $event.target.value
+                        },
                       },
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "name", required: "" },
-                    domProps: { value: _vm.productName },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.productName = $event.target.value
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "img" } }, [
+                      _vm._v("Url รูปภาพ"),
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.productImg,
+                          expression: "productImg",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "img", required: "" },
+                      domProps: { value: _vm.productImg },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.productImg = $event.target.value
+                        },
                       },
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "img" } }, [_vm._v("Image Url")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.productImg,
-                        expression: "productImg",
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "price" } }, [_vm._v("ราคา")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.price,
+                          expression: "price",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "number", id: "price", required: "" },
+                      domProps: { value: _vm.price },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.price = $event.target.value
+                        },
                       },
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "img", required: "" },
-                    domProps: { value: _vm.productImg },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.productImg = $event.target.value
+                    }),
+                    _vm._v(" "),
+                    _c("label", { attrs: { for: "des" } }, [
+                      _vm._v("ข้อมูลสินค้า"),
+                    ]),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.description,
+                          expression: "description",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "des", rows: "3", required: "" },
+                      domProps: { value: _vm.description },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.description = $event.target.value
+                        },
                       },
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "price" } }, [_vm._v("Price")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.price,
-                        expression: "price",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "number", id: "price", required: "" },
-                    domProps: { value: _vm.price },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.price = $event.target.value
-                      },
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "des" } }, [
-                    _vm._v("Description"),
-                  ]),
-                  _vm._v(" "),
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.description,
-                        expression: "description",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    attrs: { id: "des", rows: "3", required: "" },
-                    domProps: { value: _vm.description },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.description = $event.target.value
-                      },
-                    },
-                  }),
-                  _vm._v(" "),
-                  _vm._m(1),
-                ]
-              ),
+                    }),
+                    _vm._v(" "),
+                    _vm._m(1),
+                  ]
+                ),
+              ]),
             ]),
           ]),
         ]),
@@ -29043,7 +29047,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col" }, [
-      _c("h1", [_vm._v("Add Furnitures")]),
+      _c("h1", [_vm._v("เพิ่มสินค้า")]),
     ])
   },
   function () {
@@ -29054,13 +29058,13 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-danger mr-2", attrs: { type: "reset" } },
-        [_vm._v("\n                  Cancel\n                ")]
+        [_vm._v("\r\n                    ยกเลิก\r\n                  ")]
       ),
       _vm._v(" "),
       _c(
         "button",
         { staticClass: "btn btn-success", attrs: { type: "submit" } },
-        [_vm._v("Save")]
+        [_vm._v("บันทึก")]
       ),
     ])
   },
@@ -29121,25 +29125,6 @@ var render = function () {
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-danger mt-2",
-                            on: {
-                              click: function ($event) {
-                                return _vm.delProduct(fur.id)
-                              },
-                            },
-                          },
-                          [
-                            _vm._v(
-                              "\n                      Delete\n                    "
-                            ),
-                          ]
-                        ),
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
                             staticClass: "btn btn-primary mt-2",
                             attrs: {
                               type: "button",
@@ -29154,7 +29139,26 @@ var render = function () {
                           },
                           [
                             _vm._v(
-                              "\n                      Update\n                    "
+                              "\n                      อัปเดต\n                    "
+                            ),
+                          ]
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger mt-2",
+                            on: {
+                              click: function ($event) {
+                                return _vm.delProduct(fur.id)
+                              },
+                            },
+                          },
+                          [
+                            _vm._v(
+                              "\n                      ลบ\n                    "
                             ),
                           ]
                         ),
@@ -29200,7 +29204,7 @@ var render = function () {
                 },
                 [
                   _c("label", { attrs: { for: "name" } }, [
-                    _vm._v("Furnitures Name"),
+                    _vm._v("ชื่อสินค้า"),
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -29225,7 +29229,9 @@ var render = function () {
                     },
                   }),
                   _vm._v(" "),
-                  _c("label", { attrs: { for: "img" } }, [_vm._v("Image Url")]),
+                  _c("label", { attrs: { for: "img" } }, [
+                    _vm._v("Url รูปภาพ"),
+                  ]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -29249,7 +29255,7 @@ var render = function () {
                     },
                   }),
                   _vm._v(" "),
-                  _c("label", { attrs: { for: "price" } }, [_vm._v("Price")]),
+                  _c("label", { attrs: { for: "price" } }, [_vm._v("ราคา")]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -29274,7 +29280,7 @@ var render = function () {
                   }),
                   _vm._v(" "),
                   _c("label", { attrs: { for: "des" } }, [
-                    _vm._v("Description"),
+                    _vm._v("ข้อมูลสินค้า"),
                   ]),
                   _vm._v(" "),
                   _c("textarea", {
@@ -29317,7 +29323,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col" }, [
-          _c("h1", [_vm._v("Furnitures Dashboard")]),
+          _c("h1", [_vm._v("รายการเฟอร์นิเจอร์")]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col text-end mt-2" }, [
@@ -29327,7 +29333,7 @@ var staticRenderFns = [
               staticClass: "btn btn-success",
               attrs: { href: "/create", "data-bs-target": "#addProduct" },
             },
-            [_vm._v("New Product")]
+            [_vm._v("เพิ่มสินค้า")]
           ),
         ]),
       ]),
@@ -29339,19 +29345,19 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "table-secondary" }, [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("รายการ")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Image")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("รูปภาพ")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ชื่อสินค้า")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Price")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ราคา")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Description")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ข้อมูล")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("อัปเดต")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Update")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ลบ")]),
       ]),
     ])
   },
@@ -29361,7 +29367,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", { staticClass: "modal-title", attrs: { id: "modal-header" } }, [
-        _vm._v("Update Game"),
+        _vm._v("อัปเดตสินค้า"),
       ]),
       _vm._v(" "),
       _c("button", {
@@ -29382,13 +29388,13 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-danger mr-2", attrs: { type: "reset" } },
-        [_vm._v("Cancel")]
+        [_vm._v("ลบข้อมูล")]
       ),
       _vm._v(" "),
       _c(
         "button",
         { staticClass: "btn btn-success", attrs: { type: "submit" } },
-        [_vm._v("Update")]
+        [_vm._v("อัปเดต")]
       ),
     ])
   },
@@ -29431,7 +29437,6 @@ var staticRenderFns = [
         staticClass: "img-fluid",
         attrs: {
           src: "https://scontent.fcnx3-1.fna.fbcdn.net/v/t39.30808-6/271871178_3542730269286698_3375559899961798443_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeH3MdfsConwbZNli8awwO7DPcEBuVeAD_M9wQG5V4AP8yIv2qf70WYJ7mbWBbT7xA3PnXmunkhVdmy4qP-tGcpb&_nc_ohc=mynp1tt3ma8AX_P8e79&tn=u5Sb0-YIOHJ9kqR9&_nc_ht=scontent.fcnx3-1.fna&oh=00_AT9C8T6Phtj0gOe-KfARQG8jrvgbBnQs00QUXV7_oZlk4Q&oe=62214EDE",
-          alt: "...",
         },
       }),
     ])
@@ -29459,9 +29464,9 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header" }, [
+  return _c("div", { staticClass: "container " }, [
+    _c("div", { staticClass: "card " }, [
+      _c("div", { staticClass: "card-header text-white bg-dark" }, [
         _c("div", { staticClass: "row" }, [
           _vm._m(0),
           _vm._v(" "),
@@ -29491,7 +29496,7 @@ var render = function () {
                   staticClass: "form-control me-2",
                   attrs: {
                     type: "search",
-                    placeholder: "Search",
+                    placeholder: "ค้นหาสินค้า",
                     "aria-label": "Search",
                     required: "",
                   },
@@ -29509,7 +29514,7 @@ var render = function () {
                 _c(
                   "button",
                   { staticClass: "btn btn-success", attrs: { type: "submit" } },
-                  [_vm._v("Search")]
+                  [_vm._v("ค้นหา")]
                 ),
               ]
             ),
@@ -29517,7 +29522,7 @@ var render = function () {
         ]),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "card-body text-dark bg-light" }, [
         _c("div", { staticClass: "container-sm" }, [
           _c(
             "div",
@@ -29532,7 +29537,7 @@ var render = function () {
                 [
                   _c(
                     "div",
-                    { staticClass: "card", staticStyle: { width: "18rem" } },
+                    { staticClass: "card ", staticStyle: { width: "18rem" } },
                     [
                       _c("img", {
                         staticClass: "card-img-top",
@@ -29555,7 +29560,16 @@ var render = function () {
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-primary",
+                            staticClass: "btn btn-warning my-2 ",
+                            attrs: { type: "button" },
+                          },
+                          [_vm._v("Buy")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-dark ",
                             attrs: {
                               "data-bs-toggle": "modal",
                               "data-bs-target": "#readModal",
@@ -29568,7 +29582,7 @@ var render = function () {
                           },
                           [
                             _vm._v(
-                              "\n                  Read more\n                "
+                              "\n                  อ่านข้อมูลเพิ่มเติม\n                "
                             ),
                           ]
                         ),
@@ -29587,7 +29601,7 @@ var render = function () {
     _c(
       "div",
       {
-        staticClass: "modal fade",
+        staticClass: "modal fade ",
         attrs: {
           id: "readModal",
           "data-bs-backdrop": "static",
@@ -29598,7 +29612,7 @@ var render = function () {
         },
       },
       [
-        _c("div", { staticClass: "modal-dialog" }, [
+        _c("div", { staticClass: "modal-dialog " }, [
           _c("div", { staticClass: "modal-content" }, [
             _c("div", { staticClass: "modal-header" }, [
               _c(
@@ -29665,15 +29679,15 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container " }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card text-white bg-dark" }, [
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12" }),
+            _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "col-12" }, [
-              _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "card-body text-dark bg-light" }, [
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-12" }),
                   _vm._v(" "),
@@ -29731,9 +29745,9 @@ var render = function () {
                                         { staticClass: "card-text mt-5" },
                                         [
                                           _vm._v(
-                                            "\n                                Price : " +
+                                            "\n                                ราคา : " +
                                               _vm._s(fur.price) +
-                                              " ฿\n                              "
+                                              " บาท\n                              "
                                           ),
                                         ]
                                       ),
@@ -29747,9 +29761,9 @@ var render = function () {
                                               "button",
                                               {
                                                 staticClass:
-                                                  "btn btn-primary btn-block",
+                                                  "btn btn-dark btn-block",
                                                 attrs: {
-                                                  type: "button",
+                                                  type: "button ",
                                                   "data-bs-toggle": "modal",
                                                   "data-bs-target": "#buyGame",
                                                 },
@@ -29761,7 +29775,7 @@ var render = function () {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                                    Read more\n                                  "
+                                                  "\n                                    อ่านข้อมูลเพิ่มเติม\n                                  "
                                                 ),
                                               ]
                                             ),
@@ -29876,9 +29890,9 @@ var render = function () {
                                     _c("div", { staticClass: "text-center" }, [
                                       _c("h2", [
                                         _vm._v(
-                                          "in steam " +
+                                          "ราคา " +
                                             _vm._s(_vm.furPrice) +
-                                            " "
+                                            " บาท"
                                         ),
                                       ]),
                                     ]),
@@ -29901,7 +29915,16 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-8" }, [
+      _c("h1", [_vm._v("สินค้าที่พบ")]),
+    ])
+  },
+]
 render._withStripped = true
 
 
