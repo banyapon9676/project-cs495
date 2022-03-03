@@ -68,7 +68,6 @@
           </div>
         </div>
       </div>
-      <!-- Modal Update product -->
     </div>
     <div
       class="modal fade"
@@ -139,8 +138,6 @@ export default {
   data() {
     return {
       furnitures: [],
-
-      // form
       productId: null,
       productName: null,
       productImg: null,
@@ -157,9 +154,7 @@ export default {
       .catch((err) => console.log(err));
   },
   methods: {
-    // Update product function
     updateModal(id) {
-      // API Get data from id and  from
       axios.get(`/api/product/show/${id}`).then((data) => {
         this.productId = data.data.id, 
         this.productName = data.data.name;
@@ -182,7 +177,6 @@ export default {
         })
         .catch((err) => alert(err));
     },
-    // Delete function
     delProduct(id) {
       const isComfirm = confirm("คุณแน่ใจว่าจะลบสินค้าชิ้นนี้");
       if (isComfirm == true) {

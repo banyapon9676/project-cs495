@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin_controller'])->name('admin');
 
 Route::get('/search/{name}', [App\Http\Controllers\HomeController::class, 'search_controller'])->name('search');
+
+Route::resource('orders', OrderController::class);
+
+Route::post('/orders', 'App\Http\Controllers\OrderController@store')->name('BuyOrder'); 

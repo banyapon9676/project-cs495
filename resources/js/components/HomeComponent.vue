@@ -1,6 +1,6 @@
 <template>
-  <div class="container ">
-    <div class="card ">
+  <div class="container">
+    <div class="card">
       <div class="card-header text-white bg-dark">
         <div class="row">
           <div class="col-8">
@@ -24,36 +24,55 @@
       <div class="card-body text-dark bg-light">
         <div class="container-sm">
           <div class="row">
-            <div class="col-4 mt-5 d-flex justify-content-center" v-for="fur in furnitures" :key="fur.id">
-              <div class="card " style="width: 18rem">
-                <img :src="fur.image" class="card-img-top" />
-                <div class="card-body">
-                  <h5 class="card-title">{{ fur.name }}</h5>
-                  <p class="card-text text-truncate">
-                    {{ fur.description }}
-                  </p>
-                  
-                  <button type="button" class="btn btn-warning my-2 ">Buy</button>
-                  
-                  <button
-                    class="btn btn-dark "
-                    data-bs-toggle="modal"
-                    data-bs-target="#readModal"
-                    @click="readModal(fur.id)"
-                  >
-                    อ่านข้อมูลเพิ่มเติม
-                  </button>
+            <div
+              class="col-4 mt-5 d-flex justify-content-center"
+              v-for="fur in furnitures"
+              :key="fur.id"
+            >
+              <form action="orders" method="POST">
+                <input type="hidden" name="_token" :value="csrf" />
+
+                <input type="hidden" name="product_id" :value="fur.id" />
+
+                <div class="card" style="width: 18rem">
+                  <img :src="fur.image" class="card-img-top" />
+                  <div class="card-body">
+                    <h5 class="card-title">{{ fur.name }}</h5>
+                    <p class="card-text text-truncate">
+                      {{ fur.description }}
+                    </p>
+
+                    <button
+                      type="submit"
+                      class="btn btn-warning my-2"
+                      :value="csrf"
+                    >
+                      ซื้อ
+                    </button>
+
+                    <button
+                      type="button"
+                      class="btn btn-dark"
+                      data-bs-toggle="modal"
+                      data-bs-target="#readModal"
+                      @click="readModal(fur.id)"
+                    >
+                      อ่านข้อมูลเพิ่มเติม
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ข้างใน -->
+
+  
+    
     <div
-      class="modal fade "
+      class="modal fade"
       id="readModal"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -61,8 +80,8 @@
       aria-labelledby="readLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog ">
-        <div class="modal-content"> 
+      <div class="modal-dialog">
+        <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="readLabel">{{ furName }}</h5>
             <button
@@ -77,16 +96,22 @@
             <p>{{ furDes }}</p>
             <h3>ราคา {{ furPrice }} บาท</h3>
           </div>
+           
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 
 <script>
 export default {
+  props: ["post-route"],
   data() {
     return {
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content"),
       furnitures: [],
 
       furName: null,
@@ -94,14 +119,13 @@ export default {
       furPrice: null,
       furDes: null,
 
-      searchText: null
+      searchText: null,
     };
   },
   mounted() {
     this.getFurnitures();
   },
   methods: {
-    
     getFurnitures() {
       axios
         .get("/api/product")
@@ -111,7 +135,6 @@ export default {
         .catch((err) => console.log(err));
     },
 
-    
     readModal(id) {
       axios.get(`/api/product/show/${id}`).then((data) => {
         this.furName = data.data.name;
@@ -120,10 +143,9 @@ export default {
         this.furDes = data.data.description;
       });
     },
-   searchClick() {
+    searchClick() {
       window.location.replace(`/search/${this.searchText}`);
     },
-
   },
 };
 </script>

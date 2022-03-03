@@ -8,14 +8,12 @@
               <h1>สินค้าที่พบ</h1>
             </div>
             <div class="col-12">
-              <!-- Card body -->
               <div class="card-body text-dark bg-light">
                 <div class="row">
                   <div class="col-12">
                   </div>
                   <div class="col-12">
                     <div class="row my-5">
-                      <!-- Loop games -->
                       <div class="col-6" v-for="fur in furnitures" :key="fur.id">
                         <div class="card mb-3" style="max-width: 540px">
                           <div class="row g-0">
@@ -37,7 +35,6 @@
                                   ราคา : {{ fur.price }} บาท
                                 </h4>
                                 <div class="card-text">
-                                  <!-- buy btn -->
                                   <div class="d-grid gap-2 mt-5">
                                     <button
                                       type="button "
@@ -55,7 +52,6 @@
                           </div>
                         </div>
 
-                        <!-- Modal -->
                         <div
                           class="modal fade"
                           id="buyGame"
@@ -105,7 +101,6 @@
                             </div>
                           </div>
                         </div>
-                        <!--end modal-->
                       </div>
                     </div>
                   </div>

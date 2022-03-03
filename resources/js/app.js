@@ -25,6 +25,7 @@ Vue.component('admin-component', require('./components/AdminComponent.vue').defa
 Vue.component('add-component', require('./components/AddComponent.vue').default);
 Vue.component('search-component', require('./components/SearchComponent.vue').default);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -62,7 +62,6 @@
 export default {
   data() {
     return {
-      // for form
       productName: null,
       productImg: null,
       price: null,
@@ -70,7 +69,6 @@ export default {
     };
   },
   methods: {
-    // Add product function
     addProduct() {
       axios
         .post("/api/product/store", {

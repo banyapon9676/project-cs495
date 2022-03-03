@@ -5427,7 +5427,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      // for form
       productName: null,
       productImg: null,
       price: null,
@@ -5435,7 +5434,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    // Add product function
     addProduct: function addProduct() {
       axios.post("/api/product/store", {
         name: this.productName,
@@ -5600,12 +5598,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       furnitures: [],
-      // form
       productId: null,
       productName: null,
       productImg: null,
@@ -5623,11 +5619,9 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    // Update product function
     updateModal: function updateModal(id) {
       var _this2 = this;
 
-      // API Get data from id and  from
       axios.get("/api/product/show/".concat(id)).then(function (data) {
         _this2.productId = data.data.id, _this2.productName = data.data.name;
         _this2.productImg = data.data.image;
@@ -5648,7 +5642,6 @@ __webpack_require__.r(__webpack_exports__);
         return alert(err);
       });
     },
-    // Delete function
     delProduct: function delProduct(id) {
       var isComfirm = confirm("คุณแน่ใจว่าจะลบสินค้าชิ้นนี้");
 
@@ -5793,9 +5786,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["post-route"],
   data: function data() {
     return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
       furnitures: [],
       furName: null,
       furImg: null,
@@ -5846,11 +5862,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
 //
 //
 //
@@ -29464,8 +29475,8 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container " }, [
-    _c("div", { staticClass: "card " }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-header text-white bg-dark" }, [
         _c("div", { staticClass: "row" }, [
           _vm._m(0),
@@ -29535,60 +29546,77 @@ var render = function () {
                   staticClass: "col-4 mt-5 d-flex justify-content-center",
                 },
                 [
-                  _c(
-                    "div",
-                    { staticClass: "card ", staticStyle: { width: "18rem" } },
-                    [
-                      _c("img", {
-                        staticClass: "card-img-top",
-                        attrs: { src: fur.image },
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h5", { staticClass: "card-title" }, [
-                          _vm._v(_vm._s(fur.name)),
-                        ]),
+                  _c("form", { attrs: { action: "orders", method: "POST" } }, [
+                    _c("input", {
+                      attrs: { type: "hidden", name: "_token" },
+                      domProps: { value: _vm.csrf },
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: { type: "hidden", name: "product_id" },
+                      domProps: { value: fur.id },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "card", staticStyle: { width: "18rem" } },
+                      [
+                        _c("img", {
+                          staticClass: "card-img-top",
+                          attrs: { src: fur.image },
+                        }),
                         _vm._v(" "),
-                        _c("p", { staticClass: "card-text text-truncate" }, [
-                          _vm._v(
-                            "\n                  " +
-                              _vm._s(fur.description) +
-                              "\n                "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-warning my-2 ",
-                            attrs: { type: "button" },
-                          },
-                          [_vm._v("Buy")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-dark ",
-                            attrs: {
-                              "data-bs-toggle": "modal",
-                              "data-bs-target": "#readModal",
+                        _c("div", { staticClass: "card-body" }, [
+                          _c("h5", { staticClass: "card-title" }, [
+                            _vm._v(_vm._s(fur.name)),
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card-text text-truncate" }, [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(fur.description) +
+                                "\n                  "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-warning my-2",
+                              attrs: { type: "submit", value: _vm.csrf },
                             },
-                            on: {
-                              click: function ($event) {
-                                return _vm.readModal(fur.id)
+                            [
+                              _vm._v(
+                                "\n                    ซื้อ\n                  "
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-dark",
+                              attrs: {
+                                type: "button",
+                                "data-bs-toggle": "modal",
+                                "data-bs-target": "#readModal",
+                              },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.readModal(fur.id)
+                                },
                               },
                             },
-                          },
-                          [
-                            _vm._v(
-                              "\n                  อ่านข้อมูลเพิ่มเติม\n                "
-                            ),
-                          ]
-                        ),
-                      ]),
-                    ]
-                  ),
+                            [
+                              _vm._v(
+                                "\n                    อ่านข้อมูลเพิ่มเติม\n                  "
+                              ),
+                            ]
+                          ),
+                        ]),
+                      ]
+                    ),
+                  ]),
                 ]
               )
             }),
@@ -29601,7 +29629,7 @@ var render = function () {
     _c(
       "div",
       {
-        staticClass: "modal fade ",
+        staticClass: "modal fade",
         attrs: {
           id: "readModal",
           "data-bs-backdrop": "static",
@@ -29612,7 +29640,7 @@ var render = function () {
         },
       },
       [
-        _c("div", { staticClass: "modal-dialog " }, [
+        _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
             _c("div", { staticClass: "modal-header" }, [
               _c(
