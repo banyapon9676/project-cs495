@@ -1,5 +1,5 @@
 <template>
-  <div class="container ">
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="card text-white bg-dark">
@@ -10,51 +10,63 @@
             <div class="col-12">
               <div class="card-body text-dark bg-light">
                 <div class="row">
-                  <div class="col-12">
-                  </div>
+                  <div class="col-12"></div>
                   <div class="col-12">
                     <div class="row my-5">
-                      <div class="col-6" v-for="fur in furnitures" :key="fur.id">
-                        <div class="card mb-3" style="max-width: 540px">
-                          <div class="row g-0">
-                            <div class="col-md-4">
-                              <img
-                                :src="fur.image"
-                                class="img-fluid rounded-start"
-                              />
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <h5 class="card-title">
-                                  {{ fur.name }}
-                                </h5>
-                                <p class="card-text text-truncate mt-2">
-                                  {{ fur.description }}
-                                </p>
-                                <h4 class="card-text mt-5">
-                                  ราคา : {{ fur.price }} บาท
-                                </h4>
-                                <div class="card-text">
-                                  <div class="d-grid gap-2 mt-5">
-                                    <button
-                                      type="button "
-                                      data-bs-toggle="modal"
-                                      data-bs-target="#buyGame"
-                                      class="btn btn-dark btn-block"
-                                      @click="readModal(fur.id)"
-                                    >
-                                      อ่านข้อมูลเพิ่มเติม
-                                    </button>
+                      <div
+                        class="col-6"
+                        v-for="fur in furnitures"
+                        :key="fur.id"
+                      >
+                       
+                          <div class="card mb-3" style="max-width: 540px">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <img
+                                  :src="fur.image"
+                                  class="img-fluid rounded-start"
+                                />
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h5 class="card-title">
+                                    {{ fur.name }}
+                                  </h5>
+                                  <p class="card-text text-truncate mt-2">
+                                    {{ fur.description }}
+                                  </p>
+                                  <h4 class="card-text mt-5">
+                                    ราคา : {{ fur.price }} บาท
+                                  </h4>
+                                  <div class="card-text">
+                                    <div class="d-grid gap-2 mt-5">
+                                      <button
+                                        type="submit"
+                                        class="btn btn-warning my-2"
+                                        :value="csrf"
+                                      >
+                                        ซื้อ
+                                      </button>
+                                      <button
+                                        type="button "
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#readModal"
+                                        class="btn btn-dark btn-block"
+                                        @click="readModal(fur.id)"
+                                      >
+                                        อ่านข้อมูลเพิ่มเติม
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                      
 
                         <div
                           class="modal fade"
-                          id="buyGame"
+                          id="readModal"
                           data-bs-backdrop="static"
                           data-bs-keyboard="false"
                           tabindex="-1"
@@ -64,7 +76,7 @@
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="G_name">
+                                <h5 class="modal-title" id="furname">
                                   {{ furName }}
                                 </h5>
                                 <button
@@ -117,6 +129,10 @@
 export default {
   data() {
     return {
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content"),
+
       searchText: null,
       furnitures: [],
       furId: "",
@@ -126,6 +142,7 @@ export default {
       furDes: "",
     };
   },
+  
   created() {
     const route = window.location.href.split("/");
     this.searchText = route[route.length - 1];

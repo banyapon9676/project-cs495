@@ -5977,9 +5977,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
       searchText: null,
       furnitures: [],
       furId: "",
@@ -29447,7 +29460,7 @@ var staticRenderFns = [
       _c("img", {
         staticClass: "img-fluid",
         attrs: {
-          src: "https://scontent.fcnx3-1.fna.fbcdn.net/v/t39.30808-6/271871178_3542730269286698_3375559899961798443_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeH3MdfsConwbZNli8awwO7DPcEBuVeAD_M9wQG5V4AP8yIv2qf70WYJ7mbWBbT7xA3PnXmunkhVdmy4qP-tGcpb&_nc_ohc=mynp1tt3ma8AX_P8e79&tn=u5Sb0-YIOHJ9kqR9&_nc_ht=scontent.fcnx3-1.fna&oh=00_AT9C8T6Phtj0gOe-KfARQG8jrvgbBnQs00QUXV7_oZlk4Q&oe=62214EDE",
+          src: "https://scontent.fbkk12-1.fna.fbcdn.net/v/t39.30808-6/271871178_3542730269286698_3375559899961798443_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeH3MdfsConwbZNli8awwO7DPcEBuVeAD_M9wQG5V4AP8yIv2qf70WYJ7mbWBbT7xA3PnXmunkhVdmy4qP-tGcpb&_nc_ohc=_swu_CF_sWQAX-Of81d&tn=VCw3u0-QGgsaWEaG&_nc_ht=scontent.fbkk12-1.fna&oh=00_AT8M_edPuSKEm60Px2yyE3soQvMQPdYczefBBYKs1XwpNQ&oe=62273D9E",
         },
       }),
     ])
@@ -29707,7 +29720,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container " }, [
+  return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "card text-white bg-dark" }, [
@@ -29747,9 +29760,9 @@ var render = function () {
                                     _c("div", { staticClass: "card-body" }, [
                                       _c("h5", { staticClass: "card-title" }, [
                                         _vm._v(
-                                          "\n                                " +
+                                          "\n                                  " +
                                             _vm._s(fur.name) +
-                                            "\n                              "
+                                            "\n                                "
                                         ),
                                       ]),
                                       _vm._v(" "),
@@ -29761,9 +29774,9 @@ var render = function () {
                                         },
                                         [
                                           _vm._v(
-                                            "\n                                " +
+                                            "\n                                  " +
                                               _vm._s(fur.description) +
-                                              "\n                              "
+                                              "\n                                "
                                           ),
                                         ]
                                       ),
@@ -29773,9 +29786,9 @@ var render = function () {
                                         { staticClass: "card-text mt-5" },
                                         [
                                           _vm._v(
-                                            "\n                                ราคา : " +
+                                            "\n                                  ราคา : " +
                                               _vm._s(fur.price) +
-                                              " บาท\n                              "
+                                              " บาท\n                                "
                                           ),
                                         ]
                                       ),
@@ -29789,11 +29802,29 @@ var render = function () {
                                               "button",
                                               {
                                                 staticClass:
+                                                  "btn btn-warning my-2",
+                                                attrs: {
+                                                  type: "submit",
+                                                  value: _vm.csrf,
+                                                },
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                      ซื้อ\n                                    "
+                                                ),
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
                                                   "btn btn-dark btn-block",
                                                 attrs: {
                                                   type: "button ",
                                                   "data-bs-toggle": "modal",
-                                                  "data-bs-target": "#buyGame",
+                                                  "data-bs-target":
+                                                    "#readModal",
                                                 },
                                                 on: {
                                                   click: function ($event) {
@@ -29803,7 +29834,7 @@ var render = function () {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                                    อ่านข้อมูลเพิ่มเติม\n                                  "
+                                                  "\n                                      อ่านข้อมูลเพิ่มเติม\n                                    "
                                                 ),
                                               ]
                                             ),
@@ -29821,7 +29852,7 @@ var render = function () {
                               {
                                 staticClass: "modal fade",
                                 attrs: {
-                                  id: "buyGame",
+                                  id: "readModal",
                                   "data-bs-backdrop": "static",
                                   "data-bs-keyboard": "false",
                                   tabindex: "-1",
@@ -29837,7 +29868,7 @@ var render = function () {
                                         "h5",
                                         {
                                           staticClass: "modal-title",
-                                          attrs: { id: "G_name" },
+                                          attrs: { id: "furname" },
                                         },
                                         [
                                           _vm._v(

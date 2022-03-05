@@ -40,3 +40,6 @@ Route::get('/search/{name}', [App\Http\Controllers\HomeController::class, 'searc
 Route::resource('orders', OrderController::class);
 
 Route::post('/orders', 'App\Http\Controllers\OrderController@store')->name('BuyOrder'); 
+
+
+Route::post('/orders', 'App\Http\Controllers\OrderController@store')->name('BuyOrder'); 
