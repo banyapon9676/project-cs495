@@ -18,7 +18,6 @@
                         v-for="fur in furnitures"
                         :key="fur.id"
                       >
-                       
                           <div class="card mb-3" style="max-width: 540px">
                             <div class="row g-0">
                               <div class="col-md-4">
@@ -132,7 +131,6 @@ export default {
       csrf: document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute("content"),
-
       searchText: null,
       furnitures: [],
       furId: "",
@@ -142,7 +140,6 @@ export default {
       furDes: "",
     };
   },
-  
   created() {
     const route = window.location.href.split("/");
     this.searchText = route[route.length - 1];

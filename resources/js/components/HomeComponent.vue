@@ -68,8 +68,6 @@
       </div>
     </div>
 
-
-  
     
     <div
       class="modal fade"
@@ -96,11 +94,9 @@
             <p>{{ furDes }}</p>
             <h3>ราคา {{ furPrice }} บาท</h3>
           </div>
-           
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -113,12 +109,10 @@ export default {
         .querySelector('meta[name="csrf-token"]')
         .getAttribute("content"),
       furnitures: [],
-
       furName: null,
       furImg: null,
       furPrice: null,
       furDes: null,
-
       searchText: null,
     };
   },
